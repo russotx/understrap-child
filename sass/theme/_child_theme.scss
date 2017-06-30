@@ -8,5 +8,14 @@ Contents:
 
 -------------------------------------*/
 
-
+.jumbotron {
+  h1 {
+    font-family: $r-title-f;
+    font-style: normal;
+    font-weight: 700;
+  }
+  h2 {
+    font-family: $font-family-base;
+  }
+}                               
 

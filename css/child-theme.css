@@ -1,12 +1,4 @@
 @charset "UTF-8";
-.jumbotron h1 {
-  font-family: "Oswald", Futura, "Trebuchet MS";
-  font-style: normal;
-  font-weight: 700; }
-
-.jumbotron h2 {
-  font-family: Poppins, sans-serif; }
-
 /*!
  * Bootstrap v4.0.0-alpha.6 (https://getbootstrap.com)
  * Copyright 2011-2017 The Bootstrap Authors
@@ -9251,3 +9243,10 @@ Contents:
 1.1 Header
 
 -------------------------------------*/
+.jumbotron h1 {
+  font-family: "Oswald", Futura, "Trebuchet MS";
+  font-style: normal;
+  font-weight: 700; }
+
+.jumbotron h2 {
+  font-family: Poppins, sans-serif; }

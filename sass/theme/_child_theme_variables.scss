@@ -5,22 +5,18 @@
 // Thats the ugly Bootstrap blue used for all the links, primary buttons etc.
 // Just add your color code here, compile the theme.scss file to change this color everywhere
 
+// FONTS
+//-------------------------------------------------- 
 $font-family-sans-serif: Poppins, sans-serif !default;
 $font-family-monospace:  Inconsolata, "Lucida Console" !default;
 $title-font-stack:      "Oswald", Futura, "Trebuchet MS" !default;
 $font-family-base:      $font-family-sans-serif !default;
-$brand-primary:         #fece00; //#ff6d5a
-$jumbotron-bg:         #a6c7f8;
+
 $r-title-f:              $title-font-stack !default;
 
-.jumbotron {
-  h1 {
-    font-family: $r-title-f;
-    font-style: normal;
-    font-weight: 700;
-  }
-  h2 {
-    font-family: $font-family-base;
-  }
-}                               
+// COLORS
+//--------------------------------------------------
+$brand-primary:         #fece00; //#ff6d5a
+$jumbotron-bg:         #a6c7f8;
+
 
