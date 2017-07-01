@@ -319,10 +319,10 @@ blockquote {
   margin: 0 0 1rem; }
 
 a {
-  color: #fece00;
+  color: #00147e;
   text-decoration: none; }
   a:focus, a:hover {
-    color: #b29000;
+    color: #4b68ff;
     text-decoration: underline; }
 
 a:not([href]):not([tabindex]) {
@@ -2343,7 +2343,7 @@ fieldset[disabled] a.btn {
 
 .btn-link {
   font-weight: normal;
-  color: #fece00;
+  color: #00147e;
   border-radius: 0; }
   .btn-link, .btn-link:active, .btn-link.active, .btn-link:disabled {
     background-color: transparent; }
@@ -2352,7 +2352,7 @@ fieldset[disabled] a.btn {
   .btn-link:hover {
     border-color: transparent; }
   .btn-link:focus, .btn-link:hover {
-    color: #b29000;
+    color: #4b68ff;
     text-decoration: underline;
     background-color: transparent; }
   .btn-link:disabled {
@@ -3916,11 +3916,11 @@ tbody.collapse.show {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #fece00;
+  color: #00147e;
   background-color: #fff;
   border: 1px solid #ddd; }
   .page-link:focus, .page-link:hover {
-    color: #b29000;
+    color: #4b68ff;
     text-decoration: none;
     background-color: #eceeef;
     border-color: #ddd; }
@@ -9239,14 +9239,24 @@ h1.navbar-brand a:hover {
     CUSTOM STYLES GO HERE
 
 Contents:
-
+1.0 Flex Layouts
 1.1 Header
 
 -------------------------------------*/
+.social-icons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around; }
+
 .jumbotron h1 {
   font-family: "Oswald", Futura, "Trebuchet MS";
   font-style: normal;
   font-weight: 700; }
 
-.jumbotron h2 {
+.jumbotron h4 {
   font-family: Poppins, sans-serif; }
+
+.soc-bg {
+  color: white; }
+  .soc-bg:hover {
+    color: #00147e; }

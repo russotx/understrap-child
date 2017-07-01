@@ -7,16 +7,25 @@
 
 // FONTS
 //-------------------------------------------------- 
+
 $font-family-sans-serif: Poppins, sans-serif !default;
 $font-family-monospace:  Inconsolata, "Lucida Console" !default;
 $title-font-stack:      "Oswald", Futura, "Trebuchet MS" !default;
-$font-family-base:      $font-family-sans-serif !default;
-
+$font-family-base:       $font-family-sans-serif !default;
 $r-title-f:              $title-font-stack !default;
+$r-code-f:               $font-family-monospace !default;
+$r-fw-bold:              700;
+$r-fw-mbold:             600;
+$r-fw-normal:            normal;
 
 // COLORS
 //--------------------------------------------------
 $brand-primary:         #fece00; //#ff6d5a
-$jumbotron-bg:         #a6c7f8;
+$jumbotron-bg:          #a6c7f8;
+$link-color:            #00147e;
+$link-hover-color:      lighten($link-color, 40%);
+$social-bg:             white;
+$social-bg-hover-c:     $link-color;
+
 
 

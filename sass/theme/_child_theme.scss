@@ -3,19 +3,45 @@
     CUSTOM STYLES GO HERE
 
 Contents:
-
+1.0 Flex Layouts
 1.1 Header
 
 -------------------------------------*/
 
+// 1.0
+//........................................
+%flex-even-r {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+%flex-even-c {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+// 1.1 Header
+//...................................... 
 .jumbotron {
   h1 {
     font-family: $r-title-f;
     font-style: normal;
     font-weight: $r-fw-bold;
   }
-  h2 {
+  h4 {
     font-family: $font-family-base;
   }
 }                               
 
+.social-icons {
+  @extend %flex-even-r;
+}
+
+.soc-bg {
+  color: $social-bg;
+  &:hover {
+    color: $social-bg-hover-c;
+  }
+}
