@@ -3,45 +3,117 @@
     CUSTOM STYLES GO HERE
 
 Contents:
-1.0 Flex Layouts
 1.1 Header
 
 -------------------------------------*/
 
-// 1.0
-//........................................
-%flex-even-r {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+
+@mixin hover-reveal($trans-dur, $top, $bottom) {
+  .#{$top} {
+    opacity: 1;
+    transition: $trans-dur ease-in-out;
+  }
+  .#{$bottom} {
+    opacity: 0;
+    transition: $trans-dur ease-in-out;
+  }
+  &:hover {
+    .#{$top} {
+      opacity: 0;
+      transition: $trans-dur ease-in-out;
+    }
+    .#{$bottom} {
+      opacity: 1;
+      transition: $trans-dur ease-in-out;
+    }
+  }
 }
 
-%flex-even-c {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
 
 // 1.1 Header
 //...................................... 
-.jumbotron {
+.page-header {
+  padding: 8px 15px;
+  background-color: $jumbotron-bg;
   h1 {
     font-family: $r-title-f;
     font-style: normal;
     font-weight: $r-fw-bold;
   }
   h4 {
-    font-family: $font-family-base;
+    font-family: $font-family-monospace;
   }
 }                               
 
 .social-icons {
-  @extend %flex-even-r;
+  display: flex;
+  flex-direction: row;
+  justify-content: $social-justify;
+  //overflow-x: hidden;
 }
 
 .soc-bg {
   color: $social-bg;
-  &:hover {
-    color: $social-bg-hover-c;
+  &:hover { color: $social-bg-hover-c; }
+}
+
+#email-button {
+  color: $link-color;
+  .top-icon-bg {
+    transform: rotateX(0deg);
+    transition: .3s .2s;
   }
+  .top-icon {
+    opacity: 1;
+    transition: .3s .2s;
+  }
+  .reveal-icon-bg {
+    transform: scaleX($box-stretch) rotateY(90deg);
+    transition: .3s;
+  }
+  .reveal-icon {
+    transform: translateX($text-offset) rotateY(90deg);
+    transition: .3s;
+    font-size: .3em;
+  }
+  &:hover {
+    margin-right: 8%;
+    cursor: pointer;
+    .top-icon-bg {
+      transform: rotateX(60deg);
+      transition: .3s; 
+    }
+    .top-icon {
+      opacity: 0;
+      transition: .3s;
+    }
+    .reveal-icon-bg {
+      transform: scaleX($box-stretch) rotateY(0deg);
+      transition: .3s .2s;
+    }
+    .reveal-icon {
+      transform: translateX($text-offset) rotateY(0deg);
+      transition: .3s .2s;
+    }
+  }
+}
+
+#copiedIndic {
+  font-size: .5em;
+  font-family: Arial;
+}
+
+#copiedIndic.copiedEffect {
+  animation: puff 1.5s;
+}
+
+@keyframes puff {
+  from { 
+          transform: translateY(-25px);
+          opacity: 1; 
+       }
+  to   { 
+          transform: translateY(-40px); 
+          opacity: 0; 
+       }
 }

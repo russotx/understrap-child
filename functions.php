@@ -26,3 +26,8 @@ remove_action( 'admin_print_styles', 'print_emoji_styles' );
 
 remove_filter( 'the_content', 'wpautop' );
 remove_filter( 'the_excerpt', 'wpautop' );
+
+function load_my_js() {
+  wp_enqueue_script( 'landing-page-scripts', get_stylesheet_directory_uri() . '/js/landing-page.js', array(), '', true );
+}
+add_action( 'wp_enqueue_scripts', 'load_my_js' );

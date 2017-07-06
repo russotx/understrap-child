@@ -9239,24 +9239,71 @@ h1.navbar-brand a:hover {
     CUSTOM STYLES GO HERE
 
 Contents:
-1.0 Flex Layouts
 1.1 Header
 
 -------------------------------------*/
+.page-header {
+  padding: 8px 15px;
+  background-color: #a6c7f8; }
+  .page-header h1 {
+    font-family: "Oswald", Futura, "Trebuchet MS";
+    font-style: normal;
+    font-weight: 700; }
+  .page-header h4 {
+    font-family: Inconsolata, "Lucida Console"; }
+
 .social-icons {
   display: flex;
   flex-direction: row;
-  justify-content: space-around; }
-
-.jumbotron h1 {
-  font-family: "Oswald", Futura, "Trebuchet MS";
-  font-style: normal;
-  font-weight: 700; }
-
-.jumbotron h4 {
-  font-family: Poppins, sans-serif; }
+  justify-content: flex-start; }
 
 .soc-bg {
   color: white; }
   .soc-bg:hover {
     color: #00147e; }
+
+#email-button {
+  color: #00147e; }
+  #email-button .top-icon-bg {
+    transform: rotateX(0deg);
+    transition: .3s .2s; }
+  #email-button .top-icon {
+    opacity: 1;
+    transition: .3s .2s; }
+  #email-button .reveal-icon-bg {
+    transform: scaleX(4) rotateY(90deg);
+    transition: .3s; }
+  #email-button .reveal-icon {
+    transform: translateX(-30%) rotateY(90deg);
+    transition: .3s;
+    font-size: .3em; }
+  #email-button:hover {
+    margin-right: 8%;
+    cursor: pointer; }
+    #email-button:hover .top-icon-bg {
+      transform: rotateX(60deg);
+      transition: .3s; }
+    #email-button:hover .top-icon {
+      opacity: 0;
+      transition: .3s; }
+    #email-button:hover .reveal-icon-bg {
+      transform: scaleX(4) rotateY(0deg);
+      transition: .3s .2s; }
+    #email-button:hover .reveal-icon {
+      transform: translateX(-30%) rotateY(0deg);
+      transition: .3s .2s; }
+
+#copiedIndic {
+  font-size: .5em;
+  font-family: Arial; }
+
+#copiedIndic.copiedEffect {
+  animation: puff 1.5s; }
+
+@keyframes puff {
+  from {
+    transform: translateY(-25px);
+    opacity: 1; }
+  to {
+    transform: translateY(-40px);
+    opacity: 0; } }
