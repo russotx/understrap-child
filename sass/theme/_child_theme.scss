@@ -3,10 +3,11 @@
     CUSTOM STYLES GO HERE
 
 Contents:
-1.1 Header
-
+1.0 Header
+1.1 Social Buttons 
+2.0 Main Content
+3.0 Animations
 -------------------------------------*/
-
 
 @mixin hover-reveal($trans-dur, $top, $bottom) {
   .#{$top} {
@@ -30,10 +31,12 @@ Contents:
 }
 
 
-// 1.1 Header
+// 1.0 Header
 //...................................... 
-.page-header {
-  padding: 8px 15px;
+header {
+  padding-top: 15px;
+  padding-bottom: 10px;
+  margin-bottom: 30px;
   background-color: $jumbotron-bg;
   h1 {
     font-family: $r-title-f;
@@ -42,9 +45,23 @@ Contents:
   }
   h4 {
     font-family: $font-family-monospace;
+    opacity: 0;
+    animation: lint .01s 1.5s linear forwards;
   }
-}                               
+}      
 
+#cursor {
+  display: inline-block; 
+  position: relative; 
+  left: 7px; 
+  top: 3px; 
+  height: 5px; 
+  width: 21px; 
+  background-color: #4d4d4d; 
+  animation: blinker .5s ease-in-out alternate infinite;
+}
+
+// 1.1 Social Buttons
 .social-icons {
   display: flex;
   flex-direction: row;
@@ -96,16 +113,43 @@ Contents:
       transition: .3s .2s;
     }
   }
+  #copiedIndic {
+    font-size: .5em;
+    font-family: Arial;
+  }
+  #copiedIndic.copiedEffect {
+    animation: puff 1.5s;
+  }
 }
 
-#copiedIndic {
-  font-size: .5em;
-  font-family: Arial;
+#github-button {
+  &:hover {
+    animation: spin 1s cubic-bezier(.34,.06,1,.48);
+  }
 }
 
-#copiedIndic.copiedEffect {
-  animation: puff 1.5s;
+#linkedin-button {
+  &:hover {
+    .fa-circle {
+        animation: bounce .5s ease-in,
+                   compress .09s .5s ease-in,
+                   bounce .2s .59s ease-in reverse;
+    }
+  }
 }
+
+// 2.0 MAIN CONTENT
+//.................................................. 
+article {
+  text-align: justify;
+  max-width: 700px;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+// 3.0 ANIMATIONS
+//.................................................. 
 
 @keyframes puff {
   from { 
@@ -116,4 +160,59 @@ Contents:
           transform: translateY(-40px); 
           opacity: 0; 
        }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateZ(0);
+  }
+  35% {
+    transform: rotateZ(-90deg);
+  }
+  100% {
+    transform: rotateZ(450deg);
+  }
+}
+
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100px);
+  }
+}
+
+@keyframes compress {
+  0% {
+    transform: scaleX(1);
+    top: 100px;
+  }
+  50% {
+    transform: scaleX(1.8);
+    top: 100px;
+  }
+  100% {
+    transform: scaleX(1);
+    top: 100px
+  }
+}
+
+@keyframes blinker {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes lint {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
