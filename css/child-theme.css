@@ -9256,7 +9256,7 @@ header {
   header h4 {
     font-family: Inconsolata, "Lucida Console";
     opacity: 0;
-    animation: lint .01s 1.5s linear forwards; }
+    animation: lint .01s 2.15s linear forwards; }
 
 #cursor {
   display: inline-block;
@@ -9267,6 +9267,14 @@ header {
   width: 21px;
   background-color: #4d4d4d;
   animation: blinker .5s ease-in-out alternate infinite; }
+
+#highlight {
+  position: absolute;
+  top: 37px;
+  opacity: 0.5;
+  background-color: white;
+  height: 40px;
+  z-index: 15; }
 
 .social-icons {
   display: flex;

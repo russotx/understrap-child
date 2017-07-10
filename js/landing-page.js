@@ -1,7 +1,10 @@
 const copyBtn = document.getElementById('email-button');
 const copyTarget = document.getElementById('email-addr');
+const nameTag = document.getElementById('nameTag');
 document.addEventListener("DOMContentLoaded", () => {
   typeName();
+  setTimeout(() => {highlightName()},1500);
+  setTimeout(() => {nameCaps()},2000);
   copyBtn.addEventListener('click', () => toClipboard(copyTarget));
 })
 
@@ -46,17 +49,17 @@ function toClipboard(targetElem) {
 
 function typeName() {
   let name = "Daniel Russo";
-  const nameTag = document.getElementById('nameTag');
-  const cursor = document.getElementById('cursor');
   let firstChar = 0;
   let typeDelay = 80;
+  const cursor = document.createElement('span');
+  cursor.setAttribute('id','cursor');
   function typing(charPos, lastPos, delay) {
     setTimeout(() => { 
-      let c = name.charAt(charPos);
-      let char = document.createTextNode(c);
-      nameTag.insertBefore(char, cursor); 
+      let typed = name.slice(0,charPos);
+      nameTag.innerHTML = typed;
+      nameTag.appendChild(cursor);
       charPos++;
-      if (charPos < lastPos) {
+      if (charPos <= lastPos) {
         typing(charPos,lastPos,delay);
       }
     }, delay);
@@ -64,3 +67,38 @@ function typeName() {
   typing(firstChar,name.length,typeDelay);
 }
 
+function highlightName() {
+  const cursor = document.getElementById('cursor');
+  const highlight = document.createElement('div');
+  const nameParent = nameTag.parentElement;
+  nameParent.appendChild(highlight);
+  const highlightDelay = 1;
+  highlight.setAttribute('id','highlight');
+  function highlighting(width,left,widthLimit,delay,cursorPos){
+    setTimeout(() => {
+      width+=10;
+      left-=10;
+      cursorPos-=10;
+      let widthStyle = width+"px";
+      let leftStyle = left+"px";
+      highlight.style.width = widthStyle;
+      highlight.style.left = leftStyle;
+      nameParent.removeChild(highlight);
+      nameParent.appendChild(highlight);
+      cursor.style.left=cursorPos+"px";
+      if (width <= widthLimit) {
+        highlighting(width,left,widthLimit,delay,cursorPos);
+      }
+    },delay);
+  }
+  highlighting(0,235,215,highlightDelay,8);
+}
+
+function nameCaps(){
+  const cursor = document.getElementById('cursor');
+  const highlight = document.getElementById('highlight');
+  nameTag.innerHTML = "DANIEL RUSSO";
+  nameTag.parentElement.removeChild(highlight);
+  cursor.style.left = "7px";
+  nameTag.appendChild(cursor);
+}

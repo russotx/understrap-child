@@ -46,7 +46,7 @@ header {
   h4 {
     font-family: $font-family-monospace;
     opacity: 0;
-    animation: lint .01s 1.5s linear forwards;
+    animation: lint .01s 2.15s linear forwards;
   }
 }      
 
@@ -59,6 +59,17 @@ header {
   width: 21px; 
   background-color: #4d4d4d; 
   animation: blinker .5s ease-in-out alternate infinite;
+}
+
+#highlight {
+  position: absolute;
+  top: 37px;
+  //left: 230px;
+  opacity: 0.5;
+  background-color: white;
+  //width: 0;
+  height: 40px;
+  z-index: 15;
 }
 
 // 1.1 Social Buttons
