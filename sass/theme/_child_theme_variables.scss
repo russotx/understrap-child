@@ -20,12 +20,38 @@ $r-fw-normal:            normal;
 
 // COLORS
 //--------------------------------------------------
-$brand-primary:         #fece00; //#ff6d5a
-$jumbotron-bg:          #a6c7f8;
-$link-color:            #00147e;
-$link-hover-color:      lighten($link-color, 40%);
-$social-bg:             white;
-$social-bg-hover-c:     $link-color;
+    // --palette--
+$slate-blue:            #00364A;
+$dark-green:            #273301;
+$light-blue:            #01B8F1;
+$lime-green:            #95CB15;
+$slate-black:           #000002;
+$off-white:             #F2EEEF;
+    // -- components --
+$brand-primary:         $slate-blue;
+$header-font-color:     $off-white;
+$jumbotron-bg:          $slate-blue;
+$link-color:            $slate-blue;
+$link-hover-color:      $light-blue;
+$social-bg:             $off-white;
+$social-bg-hover-c:     $slate-blue;
+$lint-color:            $lime-green;
+$cursor-color:          darken($off-white,20%);
+$highlight-color:       $cursor-color;
+$devicons-color:        $light-blue;
+$devicons-bg-color:     $slate-blue; 
+$tech-skills-bg:        $slate-blue;
+$tech-skills-color:     $slate-black;
+$title-bar-bg:             $slate-blue;
+$title-bar-h:              80px;
+$title-bar-font-color:     $off-white;
+// IMAGES
+//.................................................. 
+$img-path:               '../../../media/';
+$code:                  'code.png';
+$board:                 'board.jpeg';
+$typewriter:            'technology-typewriter-items-collection.jpg';
+$tech-skills-bg-img:    $board;  
 
 // MISC
 //-------------------------------------------------

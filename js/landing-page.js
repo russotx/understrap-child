@@ -1,11 +1,15 @@
 const copyBtn = document.getElementById('email-button');
 const copyTarget = document.getElementById('email-addr');
 const nameTag = document.getElementById('nameTag');
+const skillsButton = document.getElementById('open-skills');
+let cursorTop = false;
+
 document.addEventListener("DOMContentLoaded", () => {
   typeName();
   setTimeout(() => {highlightName()},1500);
   setTimeout(() => {nameCaps()},2000);
   copyBtn.addEventListener('click', () => toClipboard(copyTarget));
+  skillsButton.addEventListener("click", openSkills);
 })
 
 function toClipboard(targetElem) {
@@ -51,8 +55,7 @@ function typeName() {
   let name = "Daniel Russo";
   let firstChar = 0;
   let typeDelay = 80;
-  const cursor = document.createElement('span');
-  cursor.setAttribute('id','cursor');
+  let cursor = newCursor();
   function typing(charPos, lastPos, delay) {
     setTimeout(() => { 
       let typed = name.slice(0,charPos);
@@ -65,6 +68,7 @@ function typeName() {
     }, delay);
   }
   typing(firstChar,name.length,typeDelay);
+  cursorTop = true;
 }
 
 function highlightName() {
@@ -101,4 +105,29 @@ function nameCaps(){
   nameTag.parentElement.removeChild(highlight);
   cursor.style.left = "7px";
   nameTag.appendChild(cursor);
+}
+
+function openSkills() {
+  let allTechIcons = document.getElementById('all-tech-icons');
+  let skillsEllipsis = document.getElementById('skills-ellipsis');
+  skillsEllipsis.classList.toggle('invisible');
+  skillsButton.classList.toggle('fa-plus-square-o');
+  skillsButton.classList.toggle('fa-minus-square-o');
+  if (allTechIcons.style.maxHeight) {
+    allTechIcons.style.maxHeight = null;
+  } else {
+    allTechIcons.style.maxHeight = allTechIcons.scrollHeight + 'px';
+  }
+  if (cursorTop) {
+    let oldCursor = document.getElementById('cursor');
+    oldCursor.parentElement.removeChild(oldCursor);
+    let cursor = newCursor(); 
+    allTechIcons.nextElementSibling.firstElementChild.appendChild(cursor);
+  }
+}
+
+function newCursor(){
+  let cursor = document.createElement('span');
+  cursor.setAttribute('id','cursor');
+  return cursor;
 }

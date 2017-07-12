@@ -31,3 +31,8 @@ function load_my_js() {
   wp_enqueue_script( 'landing-page-scripts', get_stylesheet_directory_uri() . '/js/landing-page.js', array(), '', true );
 }
 add_action( 'wp_enqueue_scripts', 'load_my_js' );
+
+function load_devicons() {
+	wp_enqueue_style( 'cool-devicons', get_stylesheet_directory_uri() . '/css/devicon.css', array(), '', '' );
+}
+add_action( 'wp_enqueue_scripts', 'load_devicons' );
