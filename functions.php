@@ -36,3 +36,18 @@ function load_devicons() {
 	wp_enqueue_style( 'cool-devicons', get_stylesheet_directory_uri() . '/css/devicon.css', array(), '', '' );
 }
 add_action( 'wp_enqueue_scripts', 'load_devicons' );
+
+function getImgTag( $atts ) {
+	$a = shortcode_atts( array(
+												'img_end_url' => '',
+												'class_list' => '',
+												'alt' => '',
+											), $atts );
+	$end_url = $a['img_end_url'];
+	$classes = $a['class_list'];
+	$alt_text = $a['alt'];
+	$full_url = get_stylesheet_directory_uri() . '/../..' . $end_url;	
+	$img_tag = '<img src="' . $full_url . '" class="' . $classes . '" alt="' . $alt_text . '">'; 
+	return $img_tag;
+}
+add_shortcode( 'relImgTag', 'getImgTag' );

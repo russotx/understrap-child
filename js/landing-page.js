@@ -2,15 +2,29 @@ const copyBtn = document.getElementById('email-button');
 const copyTarget = document.getElementById('email-addr');
 const nameTag = document.getElementById('nameTag');
 const skillsButton = document.getElementById('open-skills');
+const techIcons = document.getElementById('all-tech-icons');
 let cursorTop = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   typeName();
   setTimeout(() => {highlightName()},1500);
   setTimeout(() => {nameCaps()},2000);
-  copyBtn.addEventListener('click', () => toClipboard(copyTarget));
-  skillsButton.addEventListener("click", openSkills);
+  copyBtn.addEventListener('click', () => toClipboard(copyTarget), false);
+  techIcons.addEventListener('click', bounceMarble, false);
+  skillsButton.addEventListener("click", openSkills, false);
 })
+
+function bounceMarble(event) {
+  let origin = event.target;
+  // icon carries the background box-shadow, children is undefined if origin is the <i> tag
+  let icon = origin.children[0] || origin;
+  animateBounce(icon);
+  function animateBounce(element) {
+    let marble = element.parentNode.parentNode;
+    marble.classList.add('bouncey');
+    setTimeout(()=>{marble.classList.remove('bouncey')},800);
+  }
+}
 
 function toClipboard(targetElem) {
   let killGhostDelay = 1500;
@@ -112,7 +126,7 @@ function openSkills() {
   let skillsEllipsis = document.getElementById('skills-ellipsis');
   skillsEllipsis.classList.toggle('invisible');
   skillsButton.classList.toggle('fa-plus-square-o');
-  skillsButton.classList.toggle('fa-minus-square-o');
+  skillsButton.classList.toggle('fa-minus-square-o')
   if (allTechIcons.style.maxHeight) {
     allTechIcons.style.maxHeight = null;
   } else {
@@ -122,7 +136,7 @@ function openSkills() {
     let oldCursor = document.getElementById('cursor');
     oldCursor.parentElement.removeChild(oldCursor);
     let cursor = newCursor(); 
-    allTechIcons.nextElementSibling.firstElementChild.appendChild(cursor);
+    allTechIcons.parentElement.parentElement.lastElementChild.firstElementChild.appendChild(cursor);
   }
 }
 
