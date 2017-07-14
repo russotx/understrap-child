@@ -269,7 +269,10 @@ a, .fa-envelope {
       left: 12%;
       top: 3%;
       transform: rotateZ(24deg);
-      background: -webkit-linear-gradient(top,rgba(232,232,232,.52) 6%,rgba(193,221,255,.37) 19%,rgba(255,255,255,0) 58%);
+      background: -webkit-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: -moz-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: -o-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
       border-radius: 100px 100px;
     }
   }
@@ -290,20 +293,16 @@ a, .fa-envelope {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    //padding: 20px 20px;
     width: 100%;
     z-index: 3;
     figure.bouncey {
-      animation: elastic-bounce $elastic-bounce-duration;
+      animation: elastic-bounce $elastic-bounce-duration forwards;
       div.shine {
-        animation: shadow-fade $elastic-bounce-duration;
+        animation: shadow-fade $elastic-bounce-duration forwards;
       }
       div:after {
-        animation: glare-pulse $elastic-bounce-duration;
+        animation: glare-pulse $elastic-bounce-duration forwards;
       }
-      // div.shine {
-      //   animation: outerShadow $elastic-bounce-duration;
-      // }
     }
   }
   .buffer {
@@ -311,6 +310,33 @@ a, .fa-envelope {
   }
   .invisible {
     opacity: 0;
+  }
+  .mask-container {
+    position: relative;
+  }
+  .skill-mask {
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    position: absolute;
+    z-index: 30;
+    background-color: rgba(0, 54, 74, .85);
+    box-shadow: inset 0 0 4px 4.06em $slate-blue;
+    border-radius: 100px 100px;
+  }
+}
+
+.mask-container.born {
+  .skill-mask {
+    animation: skill-birth 2s ease-in forwards;
+  }
+  figure {
+    animation: rise 2.05s ease-out forwards;
+  }
+  .shine {
+    animation: drop .07s 1.98s ease-out forwards;
   }
 }
 
@@ -341,6 +367,46 @@ a, .fa-envelope {
 
 $bounce-shadow: #080a14;
 
+@keyframes skill-birth {
+  0% {
+    box-shadow: inset 0 0 4px 4.06em $slate-blue;
+    background-color: rgba(0, 54, 74, .85);
+  }
+  85% {
+    box-shadow: inset 0 0 2px 2.06em $slate-blue;
+    background-color: rgba(0, 54, 74, 0);
+  }
+  100% {
+    box-shadow: inset 0 0 1px 0em $slate-blue;
+    background-color: rgba(0, 54, 74, 0);
+    z-index: -1;
+  }
+}
+
+@keyframes drop {
+  0% {
+    box-shadow: -.15em .1em 0 0 #000002, inset -3px 2px 44px -10px #fff;
+  }
+  100% {
+    box-shadow: -.15em .1em 1em 0 #000002, inset -3px 2px 44px -10px #fff;
+  }
+}
+
+@keyframes rise {
+  0% {
+    transform: scale(.2,.2);
+  }
+  85% {
+    transform: scale(.8,.8);
+  }
+  98% {
+    transform: scale(1.03,1.03);
+  }
+  100% {
+    transform: scale(1,1); 
+  }
+}
+
 @keyframes shadow-fade {
   0% { // normal
     box-shadow: -.15em .1em 1em 0 $bounce-shadow, inset -3px 2px 44px -10px #fff;
@@ -368,59 +434,71 @@ $bounce-shadow: #080a14;
 
 @keyframes glare-pulse {
   0% {
-    width: 82%;
-    height: 81%;
-    left: 12%;
-    top: 3%;
-    transform: rotateZ(24deg);
-    background: -webkit-linear-gradient(top,rgba(232,232,232,.52) 6%,rgba(193,221,255,.37) 19%,rgba(255,255,255,0) 58%);
-  }
+      width: 82%;
+      height: 81%;
+      left: 12%;
+      top: 3%;
+      transform: rotateZ(24deg);
+      background: -webkit-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: -moz-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: -o-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+    }
   30% {
-    width: 60%;
-    height: 65%;
-    left: 23%;
-    top: 16%;
-    transform: rotatZ(26deg);
-    background: -webkit-linear-gradient(top, 
-                rgba(232,232,232,.62) 9%, 
-                rgba(193,221,255,0.2) 30%, 
-                rgba(255,255,255,0) 58%);
-  }
+      width: 60%;
+      height: 65%;
+      left: 23%;
+      top: 16%;
+      transform: rotatZ(26deg);
+      background: -webkit-linear-gradient(rgba(232,232,232,.62) 9%, rgba(193,221,255,0.2) 30%, rgba(255,255,255,0) 58%);
+      background: -moz-linear-gradient(rgba(232,232,232,.62) 9%, rgba(193,221,255,0.2) 30%, rgba(255,255,255,0) 58%);
+      background: -o-linear-gradient(rgba(232,232,232,.62) 9%, rgba(193,221,255,0.2) 30%, rgba(255,255,255,0) 58%);
+      background: linear-gradient(rgba(232,232,232,.62) 9%, rgba(193,221,255,0.2) 30%, rgba(255,255,255,0) 58%);;
+    }
   55% {
-    width: 90%;
-    height: 90%;
-    left: 5%;
-    top: 0;
-    transform: rotateZ(10deg);
-    background: -webkit-linear-gradient(top,rgba(232,232,232,.52) 6%,rgba(193,221,255,.37) 19%,rgba(255,255,255,0) 58%);
-  }
+      width: 90%;
+      height: 90%;
+      left: 5%;
+      top: 0;
+      transform: rotateZ(10deg);
+      background: -webkit-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: -moz-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: -o-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+    }
   72% {
-    width: 70%;
-    height: 70%;
-    left: 20%;
-    top: 14%;
-    transform: rotatZ(25deg);
-    background: -webkit-linear-gradient(top, 
-                rgba(232,232,232,.62) 7%, 
-                rgba(193,221,255,0.2) 25%, 
-                rgba(255,255,255,0) 58%);
-  }
+      width: 70%;
+      height: 70%;
+      left: 20%;
+      top: 14%;
+      transform: rotatZ(25deg);
+      background: -webkit-linear-gradient(rgba(232,232,232,.62) 7%, rgba(193,221,255,0.2) 25%, rgba(255,255,255,0) 58%);
+      background: -moz-linear-gradient(rgba(232,232,232,.62) 7%, rgba(193,221,255,0.2) 25%, rgba(255,255,255,0) 58%);
+      background: -o-linear-gradient(rgba(232,232,232,.62) 7%, rgba(193,221,255,0.2) 25%, rgba(255,255,255,0) 58%);
+      background: linear-gradient(rgba(232,232,232,.62) 7%, rgba(193,221,255,0.2) 25%, rgba(255,255,255,0) 58%);;
+    }
   87% {
-    width: 86%;
-    height: 86%;
-    left: 13%;
-    top: 2%;
-    transform: rotateZ(23deg);
-    background: -webkit-linear-gradient(top,rgba(232,232,232,.52) 6%,rgba(193,221,255,.37) 19%,rgba(255,255,255,0) 58%);
-  }
+      width: 86%;
+      height: 86%;
+      left: 13%;
+      top: 2%;
+      transform: rotateZ(23deg);
+      background: -webkit-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: -moz-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: -o-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+    }
   100% {
-    width: 82%;
-    height: 81%;
-    left: 12%;
-    top: 3%;
-    transform: rotateZ(24deg);
-    background: -webkit-linear-gradient(top,rgba(232,232,232,.52) 6%,rgba(193,221,255,.37) 19%,rgba(255,255,255,0) 58%);
-  }
+      width: 82%;
+      height: 81%;
+      left: 12%;
+      top: 3%;
+      transform: rotateZ(24deg);
+      background: -webkit-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: -moz-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: -o-linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+      background: linear-gradient(rgba(232,232,232,.52) 6%, rgba(193,221,255,.37) 19%, rgba(255,255,255,0) 58%);
+    }
 }
 
 @keyframes elastic-bounce {

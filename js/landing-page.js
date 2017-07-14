@@ -4,6 +4,7 @@ const nameTag = document.getElementById('nameTag');
 const skillsButton = document.getElementById('open-skills');
 const techIcons = document.getElementById('all-tech-icons');
 let cursorTop = false;
+let skillsPopped = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   typeName();
@@ -138,6 +139,24 @@ function openSkills() {
     let cursor = newCursor(); 
     allTechIcons.parentElement.parentElement.lastElementChild.firstElementChild.appendChild(cursor);
   }
+  if (!skillsPopped) {
+    skillBirth();
+  }
+  function skillBirth() {
+    let maskContainers = document.getElementsByClassName('mask-container');
+    for (let i=0; i < maskContainers.length; i++) {
+      maskContainers.item(i).classList.add('born');  
+    }
+    setTimeout(()=>{
+      let skillMasks = document.getElementsByClassName('skill-mask');
+      console.log('about to remove born class');
+      for (let i=0; i < maskContainers.length; i++) {
+        skillMasks.item(i).style.zIndex = '-5';
+        maskContainers.item(i).classList.remove('born');
+      }
+      skillsPopped = true;
+    },2050);
+  }
 }
 
 function newCursor(){
@@ -145,3 +164,4 @@ function newCursor(){
   cursor.setAttribute('id','cursor');
   return cursor;
 }
+
