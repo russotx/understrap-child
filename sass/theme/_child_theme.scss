@@ -12,27 +12,6 @@ Contents:
 3.0 Animations
 -------------------------------------*/
 
-@mixin hover-reveal($trans-dur, $top, $bottom) {
-  .#{$top} {
-    opacity: 1;
-    transition: $trans-dur ease-in-out;
-  }
-  .#{$bottom} {
-    opacity: 0;
-    transition: $trans-dur ease-in-out;
-  }
-  &:hover {
-    .#{$top} {
-      opacity: 0;
-      transition: $trans-dur ease-in-out;
-    }
-    .#{$bottom} {
-      opacity: 1;
-      transition: $trans-dur ease-in-out;
-    }
-  }
-}
-
 main {
   padding-top: 30px;
   z-index: 15;
@@ -140,7 +119,6 @@ a, .fa-envelope {
 
 .fa-square, .fa-circle {
   color: $social-bg;
-  //&:hover { color: $social-bg-hover-c; }
 }
 
 #email-button {
@@ -322,15 +300,30 @@ a, .fa-envelope {
     transform: translate(-50%,-50%);
     position: absolute;
     z-index: 30;
-    background-color: rgba(0, 54, 74, .85);
+    //background-color: rgba(0, 54, 74, .85);
     box-shadow: inset 0 0 4px 4.06em $slate-blue;
     border-radius: 100px 100px;
   }
+  figure:after {
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      border-radius: 100px 100px;
+      //box-shadow: inset 0 0 4px 4.06em rgb(0,54,74,0.85);
+      //opacity: 0;
+    }
 }
 
 .mask-container.born {
   .skill-mask {
     animation: skill-birth 2s ease-in forwards;
+  }
+  figure:after {
+    box-shadow: inset 0 0 4px 4.06em rgba(0,54,74,0.9);
+    transform: rotateZ(250deg);
+    background: -webkit-linear-gradient(rgba(0, 0, 0, 1) 6%, rgba(0, 0, 0, 0.5) 15%, rgba(40,40,40,0) 55%);
+    animation: membrane 1.2s .8s ease-in forwards; 
   }
   figure {
     animation: rise 2.05s ease-out forwards;
@@ -370,15 +363,25 @@ $bounce-shadow: #080a14;
 @keyframes skill-birth {
   0% {
     box-shadow: inset 0 0 4px 4.06em $slate-blue;
-    background-color: rgba(0, 54, 74, .85);
   }
   85% {
     box-shadow: inset 0 0 2px 2.06em $slate-blue;
-    background-color: rgba(0, 54, 74, 0);
   }
   100% {
     box-shadow: inset 0 0 1px 0em $slate-blue;
-    background-color: rgba(0, 54, 74, 0);
+    z-index: -1;
+  }
+}
+
+@keyframes membrane {
+  0% {
+    box-shadow: inset 0 0 1px 4.06em rgba(0,54,74,0.9);
+  }
+  75% {
+    box-shadow: inset 0 0 1px .8em rgba(0,54,74,0.9);
+  }
+  100% {
+    box-shadow: inset 0 0 1px 0 rgba(0,54,74,0.9);
     z-index: -1;
   }
 }
