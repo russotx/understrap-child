@@ -114,7 +114,6 @@ function highlightName() {
       var leftStyle = left + "px";
       highlight.style.width = widthStyle;
       highlight.style.left = leftStyle;
-      nameParent.removeChild(highlight);
       nameParent.appendChild(highlight);
       cursor.style.left = cursorPos + "px";
       if (width <= widthLimit) {
@@ -161,7 +160,6 @@ function openSkills() {
     }
     setTimeout(function () {
       var skillMasks = document.getElementsByClassName('skill-mask');
-      console.log('about to remove born class');
       for (var _i = 0; _i < maskContainers.length; _i++) {
         skillMasks.item(_i).style.zIndex = '-5';
         maskContainers.item(_i).classList.remove('born');

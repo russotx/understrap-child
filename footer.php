@@ -13,8 +13,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <?php get_sidebar( 'footerfull' ); ?>
 
-  <footer class="site-footer" id="colophon">
-
+  <footer class="navbar">
+				<h5 id="footer-notice">&copy;Copyright 2017 Daniel Russo</h5> 
   </footer>
 
 <?php wp_footer(); ?>
