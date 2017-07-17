@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
   copyBtn.addEventListener('click', function () {
     return toClipboard(copyTarget);
   }, false);
-  techIcons.addEventListener('click', bounceMarble, false);
+  techIcons.addEventListener('mouseover', bounceMarble, false);
   skillsButton.addEventListener("click", openSkills, false);
 });
 
