@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
   setTimeout(() => {highlightName()},1500);
   setTimeout(() => {nameCaps()},2000);
   copyBtn.addEventListener('click', () => toClipboard(copyTarget), false);
-  techIcons.addEventListener('click', bounceMarble, false);
+  techIcons.addEventListener('mouseover', bounceMarble, false);
   skillsButton.addEventListener("click", openSkills, false);
 })
 
