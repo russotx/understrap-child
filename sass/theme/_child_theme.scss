@@ -58,6 +58,23 @@ h3 {
   padding-left: 50px;  
   box-shadow: 0px -3px 20px -9px $slate-black,
               0 9px 20px -9px $slate-black;
+  h3 {
+    &:after {
+      content: "_";
+      font-size: 1.5em;
+      position: absolute;
+      top: .6em;
+      left: 1.6em;
+      color: $cursor-color;
+      opacity: 0;
+    }
+  }
+  h3.activated {
+    &:after {
+      -webkit-animation: blinker .5s ease-in-out alternate infinite; 
+      animation: blinker .5s ease-in-out alternate infinite;
+    }
+  }
 }
 
 .leader {
@@ -136,7 +153,6 @@ header {
       left: 0;
       color: $cursor-color;
       opacity: 0;
-      //animation: blinker .5s ease-in-out alternate infinite;
     }
   }
 
@@ -158,16 +174,6 @@ header {
   #name-tag.capsed:after {
     opacity: 1;  
   }
-  // #name-tag:before {
-  //   content: "_";
-  //   font-size: 1.5em;
-  //   position: absolute;
-  //   top: -0.3em;
-  //   left: 0;
-  //   color: $cursor-color;
-  //   transform: translateX(0);
-  //   animation: blinker .5s ease-in-out alternate infinite;
-  // }
 }      
 
 a, .fa-envelope {
@@ -188,9 +194,15 @@ a, .fa-envelope {
   background-color: $cursor-color; 
   opacity: 0;
 }
-#name-tag.capsed #cursor {
-  -webkit-animation: blinker .5s ease-in-out alternate infinite; 
-         animation: blinker .5s ease-in-out alternate infinite;
+#name-tag.capsed {
+  #cursor {
+    -webkit-animation: blinker .5s ease-in-out alternate infinite; 
+    animation: blinker .5s ease-in-out alternate infinite;
+  }
+  #cursor.stop {
+    -webkit-animation: none;
+    animation: none;
+  }
 }
 
 #highlight {

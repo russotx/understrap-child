@@ -9,11 +9,8 @@ let skillsPopped = false;
 
 document.addEventListener("DOMContentLoaded", () => {
   let ipadWidth = 768;
-  //typeName();
   typeText(nameTag);
-  //setTimeout(() => {highlightName()},1500);
   setTimeout(() => {highlightText(nameTag)},1500);
-  //setTimeout(() => {nameCaps()},2000);
   setTimeout(() => {toCaps(nameTag)}, 2000);
   copyBtn.addEventListener('click', () => toClipboard(copyTarget), false);
   // dev icons bounce on hover with desktop, bounce on click with mobile devices.
@@ -75,32 +72,10 @@ function toClipboard(targetElem) {
     copiedIndic.className = 'copiedEffect';
   }
 }
-/*
-function typeName() {
-  let name = "Daniel Russo";
-  let firstChar = 0;
-  let typeDelay = 80;
-  let cursor = newCursor();
-  function typing(charPos, lastPos, delay) {
-    setTimeout(() => { 
-      let typed = name.slice(0,charPos);
-      nameTag.innerHTML = typed;
-      nameTag.appendChild(cursor);
-      charPos++;
-      if (charPos <= lastPos) {
-        typing(charPos,lastPos,delay);
-      }
-    }, delay);
-  }
-  typing(firstChar,name.length,typeDelay);
-  cursorTop = true;
-}
-*/
 
 function typeText(textElement,speed=80) {
   let theChars = textElement.getElementsByTagName('span');
   let numChars = textElement.innerText.length;
-  console.log(numChars);
   let charIter = 0;
   function typing(charPos, lastPos, delay) {
     setTimeout(()=>{
@@ -117,33 +92,6 @@ function typeText(textElement,speed=80) {
   }
   typing(charIter,numChars,speed);
 }
-
-
-// function highlightName() {
-//   const cursor = document.getElementById('cursor');
-//   const highlight = document.createElement('div');
-//   const nameParent = nameTag.parentElement;
-//   nameParent.appendChild(highlight);
-//   const highlightDelay = 1;
-//   highlight.setAttribute('id','highlight');
-//   function highlighting(width,left,widthLimit,delay,cursorPos){
-//     setTimeout(() => {
-//       width+=10;
-//       left-=10;
-//       cursorPos-=10;
-//       let widthStyle = width+"px";
-//       let leftStyle = left+"px";
-//       highlight.style.width = widthStyle;
-//       highlight.style.left = leftStyle;
-//       nameParent.appendChild(highlight);
-//       cursor.style.left=cursorPos+"px";
-//       if (width <= widthLimit) {
-//         highlighting(width,left,widthLimit,delay,cursorPos);
-//       }
-//     },delay);
-//   }
-//   highlighting(0,235,215,highlightDelay,8);
-// }
 
 function highlightText(textElement) {
   let textSpans = textElement.getElementsByTagName('span');
@@ -174,15 +122,7 @@ function toCaps(textElement){
     charArray[i].style.opacity = 0;
   }
   textElement.classList.add('capsed');
-}
-
-function nameCaps(){
-  const cursor = document.getElementById('cursor');
-  const highlight = document.getElementById('highlight');
-  nameTag.innerHTML = "DANIEL RUSSO";
-  nameTag.parentElement.removeChild(highlight);
-  cursor.style.left = "7px";
-  nameTag.appendChild(cursor);
+  cursorTop = true;
 }
 
 function openSkills() {
@@ -198,9 +138,9 @@ function openSkills() {
   }
   if (cursorTop) {
     let oldCursor = document.getElementById('cursor');
-    oldCursor.parentElement.removeChild(oldCursor);
-    let cursor = newCursor(); 
-    allTechIcons.parentElement.parentElement.lastElementChild.firstElementChild.appendChild(cursor);
+    oldCursor.classList.add('stop');
+    let footerBar = document.getElementsByClassName('footer-bar');
+    footerBar[0].firstElementChild.classList.add('activated');
   }
   if (!skillsPopped) {
     skillBirth();

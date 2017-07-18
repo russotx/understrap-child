@@ -9286,6 +9286,17 @@ h3 {
 .footer-bar {
   padding-left: 50px;
   box-shadow: 0px -3px 20px -9px #000002, 0 9px 20px -9px #000002; }
+  .footer-bar h3:after {
+    content: "_";
+    font-size: 1.5em;
+    position: absolute;
+    top: .6em;
+    left: 1.6em;
+    color: #c6b4b9;
+    opacity: 0; }
+  .footer-bar h3.activated:after {
+    -webkit-animation: blinker .5s ease-in-out alternate infinite;
+    animation: blinker .5s ease-in-out alternate infinite; }
 
 .leader {
   font-weight: 700;
@@ -9384,6 +9395,10 @@ a, .fa-envelope {
 #name-tag.capsed #cursor {
   -webkit-animation: blinker .5s ease-in-out alternate infinite;
   animation: blinker .5s ease-in-out alternate infinite; }
+
+#name-tag.capsed #cursor.stop {
+  -webkit-animation: none;
+  animation: none; }
 
 #highlight {
   position: absolute;
