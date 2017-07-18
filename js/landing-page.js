@@ -1,17 +1,27 @@
+let screenWidth = window.innerWidth;
 const copyBtn = document.getElementById('email-button');
 const copyTarget = document.getElementById('email-addr');
-const nameTag = document.getElementById('nameTag');
+const nameTag = document.getElementById('name-tag');
 const skillsButton = document.getElementById('open-skills');
 const techIcons = document.getElementById('all-tech-icons');
 let cursorTop = false;
 let skillsPopped = false;
 
 document.addEventListener("DOMContentLoaded", () => {
-  typeName();
-  setTimeout(() => {highlightName()},1500);
-  setTimeout(() => {nameCaps()},2000);
+  let ipadWidth = 768;
+  //typeName();
+  typeText(nameTag);
+  //setTimeout(() => {highlightName()},1500);
+  setTimeout(() => {highlightText(nameTag)},1500);
+  //setTimeout(() => {nameCaps()},2000);
+  setTimeout(() => {toCaps(nameTag)}, 2000);
   copyBtn.addEventListener('click', () => toClipboard(copyTarget), false);
-  techIcons.addEventListener('mouseover', bounceMarble, false);
+  // dev icons bounce on hover with desktop, bounce on click with mobile devices.
+  if (screenWidth > ipadWidth) {
+    techIcons.addEventListener('mouseover', bounceMarble, false);
+  } else {
+    techIcons.addEventListener('click', bounceMarble, false);
+  }
   skillsButton.addEventListener("click", openSkills, false);
 })
 
@@ -65,7 +75,7 @@ function toClipboard(targetElem) {
     copiedIndic.className = 'copiedEffect';
   }
 }
-
+/*
 function typeName() {
   let name = "Daniel Russo";
   let firstChar = 0;
@@ -85,31 +95,85 @@ function typeName() {
   typing(firstChar,name.length,typeDelay);
   cursorTop = true;
 }
+*/
 
-function highlightName() {
-  const cursor = document.getElementById('cursor');
-  const highlight = document.createElement('div');
-  const nameParent = nameTag.parentElement;
-  nameParent.appendChild(highlight);
-  const highlightDelay = 1;
-  highlight.setAttribute('id','highlight');
-  function highlighting(width,left,widthLimit,delay,cursorPos){
-    setTimeout(() => {
-      width+=10;
-      left-=10;
-      cursorPos-=10;
-      let widthStyle = width+"px";
-      let leftStyle = left+"px";
-      highlight.style.width = widthStyle;
-      highlight.style.left = leftStyle;
-      nameParent.appendChild(highlight);
-      cursor.style.left=cursorPos+"px";
-      if (width <= widthLimit) {
-        highlighting(width,left,widthLimit,delay,cursorPos);
+function typeText(textElement,speed=80) {
+  let theChars = textElement.getElementsByTagName('span');
+  let numChars = textElement.innerText.length;
+  console.log(numChars);
+  let charIter = 0;
+  function typing(charPos, lastPos, delay) {
+    setTimeout(()=>{
+      theChars[charIter].style.opacity = 1;
+      theChars[charIter].classList.toggle('typed');
+      if (charIter > 0) {
+        theChars[charIter-1].classList.toggle('typed');
       }
+      charIter++;
+      if (charIter < numChars) {
+        typing(charIter,numChars,delay);
+      }    
     },delay);
   }
-  highlighting(0,235,215,highlightDelay,8);
+  typing(charIter,numChars,speed);
+}
+
+
+// function highlightName() {
+//   const cursor = document.getElementById('cursor');
+//   const highlight = document.createElement('div');
+//   const nameParent = nameTag.parentElement;
+//   nameParent.appendChild(highlight);
+//   const highlightDelay = 1;
+//   highlight.setAttribute('id','highlight');
+//   function highlighting(width,left,widthLimit,delay,cursorPos){
+//     setTimeout(() => {
+//       width+=10;
+//       left-=10;
+//       cursorPos-=10;
+//       let widthStyle = width+"px";
+//       let leftStyle = left+"px";
+//       highlight.style.width = widthStyle;
+//       highlight.style.left = leftStyle;
+//       nameParent.appendChild(highlight);
+//       cursor.style.left=cursorPos+"px";
+//       if (width <= widthLimit) {
+//         highlighting(width,left,widthLimit,delay,cursorPos);
+//       }
+//     },delay);
+//   }
+//   highlighting(0,235,215,highlightDelay,8);
+// }
+
+function highlightText(textElement) {
+  let textSpans = textElement.getElementsByTagName('span');
+  let textLen = textElement.innerText.length;
+  // HTMLcollection starts at zero
+  let textIter = textLen-1;
+  function highlighter(limit,hIter,startPos) {
+    let highlightSpeed = 5;
+    setTimeout(() => {
+      textSpans[hIter].classList.add('highlight');
+      if (hIter < startPos) {
+        textSpans[hIter].classList.toggle('typed');
+        textSpans[hIter+1].classList.toggle('typed');
+      }
+      hIter--;
+      if (hIter >= limit) {
+        highlighter(limit,hIter,startPos);
+      }
+    }, highlightSpeed);
+  }
+  highlighter(0, textIter, textIter);
+}
+
+function toCaps(textElement){
+  let numChars = textElement.childElementCount;
+  let charArray = textElement.getElementsByTagName('span');
+  for (let i = 0; i < numChars; i++) {
+    charArray[i].style.opacity = 0;
+  }
+  textElement.classList.add('capsed');
 }
 
 function nameCaps(){

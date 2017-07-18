@@ -9312,6 +9312,8 @@ header {
   padding-bottom: 10px;
   background-color: #00364A;
   color: #F2EEEF; }
+  header .row {
+    position: relative; }
   header h1 {
     color: #01B8F1; }
   header h4 {
@@ -9319,6 +9321,49 @@ header {
     opacity: 0;
     -webkit-animation: lint .01s 2.15s linear forwards;
     animation: lint .01s 2.15s linear forwards; }
+  header #name-box {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 2.5rem; }
+  header #name-tag {
+    position: relative;
+    width: 100%; }
+  header #name-tag span {
+    opacity: 0;
+    white-space: pre;
+    position: relative; }
+    header #name-tag span:after {
+      content: "";
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: #c6b4b9; }
+    header #name-tag span:before {
+      content: "_";
+      font-size: 1.5em;
+      position: absolute;
+      top: -0.18em;
+      left: 0;
+      color: #c6b4b9;
+      opacity: 0; }
+  header #name-tag span.typed:before {
+    opacity: 1; }
+  header #name-tag span.highlight:after {
+    opacity: .5; }
+  header #name-tag:after {
+    content: "DANIEL RUSSO";
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; }
+  header #name-tag.capsed:after {
+    opacity: 1; }
 
 a, .fa-envelope {
   color: #00364A; }
@@ -9328,18 +9373,22 @@ a, .fa-envelope {
 
 #cursor {
   display: inline-block;
-  position: relative;
-  left: 7px;
-  top: 3px;
+  position: absolute;
+  left: .8em;
+  top: .3em;
   height: 5px;
   width: 21px;
   background-color: #c6b4b9;
+  opacity: 0; }
+
+#name-tag.capsed #cursor {
   -webkit-animation: blinker .5s ease-in-out alternate infinite;
   animation: blinker .5s ease-in-out alternate infinite; }
 
 #highlight {
   position: absolute;
-  top: 37px;
+  left: 0;
+  top: 0;
   opacity: 0.5;
   background-color: #c6b4b9;
   height: 40px;
