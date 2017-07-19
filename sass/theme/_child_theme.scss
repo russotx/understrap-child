@@ -115,8 +115,10 @@ header {
   h4 {
     font-family: $font-family-monospace;
     opacity: 0;
-    -webkit-animation: lint .01s 2.15s linear forwards;
-            animation: lint .01s 2.15s linear forwards;
+  }
+  h4.linted {
+    -webkit-animation: lint .01s linear forwards;
+    animation: lint .01s linear forwards;
   }
   #name-box {
     position: relative;
@@ -124,6 +126,7 @@ header {
     flex-direction: row;
     width: 100%;
     height: $font-size-h1;
+    margin-bottom: .5rem;
   }
   #name-tag {
     position: relative;
@@ -150,7 +153,7 @@ header {
       font-size: 1.5em;
       position: absolute;
       top: -0.18em;
-      left: 0;
+      left: .3em;
       color: $cursor-color;
       opacity: 0;
     }
@@ -185,14 +188,17 @@ a, .fa-envelope {
 }
 
 #cursor {
-  display: inline-block; 
-  position: absolute; 
-  left: .8em; 
-  top: .3em; 
-  height: 5px; 
-  width: 21px; 
-  background-color: $cursor-color; 
+  position: relative;
+  left: 0.3em; 
+  top: 0.05em; 
   opacity: 0;
+  &:before {
+    content: "_";
+    font-size: 1.5em;
+    position: absolute;
+    color: $cursor-color;
+    opacity: 0;
+  }
 }
 #name-tag.capsed {
   #cursor {
