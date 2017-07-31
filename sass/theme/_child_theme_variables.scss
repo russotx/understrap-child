@@ -27,7 +27,10 @@ $dark-green:            #273301;
 $light-blue:            #01B8F1;
 $lime-green:            #95CB15;
 $slate-black:           #000002;
+$slate-gray:            #545454;
 $off-white:             #F2EEEF;
+//$material-black:        rgba(15,15,15,.90);
+$material-black:        rgba(38,37,37,1);
     // -- components --
 $brand-primary:         $slate-blue;
 $header-font-color:     $off-white;
@@ -44,9 +47,10 @@ $devicons-bg-color:     $slate-blue;
 $tech-skills-bg:        $slate-blue;
 $tech-skills-color:     $slate-black;
 $title-bar-bg:             $slate-blue;
-$title-bar-h:              80px;
 $title-bar-font-color:     $off-white;
 $bounce-shadow:         #080a14;
+$active-project:        $light-blue;
+
 // IMAGES
 //.................................................. 
 $img-path:               '../../../media/';
@@ -55,12 +59,18 @@ $board:                 'board.jpeg';
 $typewriter:            'technology-typewriter-items-collection.jpg';
 $tech-skills-bg-img:    $board;  
 
-// MISC
+// GLOBAL MISC
 //-------------------------------------------------
 $box-stretch: 4;
 $text-offset: -30%;
+
+// CONTENT SECTIONS
+//--------------------------------------------------
+  // -- header --
 $social-justify: flex-start;
 $elastic-bounce-duration: .8s;
+$title-bar-h: 80px;
 
-
+  // -- projects --
+$article-elem-padding: 1em 0;
 

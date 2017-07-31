@@ -4,6 +4,7 @@ const copyTarget = document.getElementById('email-addr');
 const nameTag = document.getElementById('name-tag');
 const skillsButton = document.getElementById('open-skills');
 const techIcons = document.getElementById('all-tech-icons');
+const projectsNav = document.getElementById('projects-nav');
 let cursorTop = false;
 let skillsPopped = false;
 
@@ -22,7 +23,22 @@ document.addEventListener("DOMContentLoaded", () => {
     techIcons.addEventListener('click', bounceMarble, false);
   }
   skillsButton.addEventListener("click", openSkills, false);
+  projectsNav.addEventListener("click",cycleProjects, false);
+
 })
+
+function cycleProjects(event){
+  let link = event.target;
+  let linksList = document.getElementById('projects-nav').getElementsByTagName('h6');
+  let projectActive = link.getAttribute('data-project');
+  let projectsList = document.getElementById('project-content-box').getElementsByTagName('article');
+  if (projectActive) {
+    for(let i=0; i<projectsList.length; i++) {
+      projectsList[i].classList.toggle('active',projectsList[i].getAttribute('id') === projectActive);
+      linksList[i].classList.toggle('active',linksList[i].getAttribute('data-project') === projectActive);
+    }
+  }
+}
 
 function bounceMarble(event) {
   let origin = event.target;

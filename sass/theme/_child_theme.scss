@@ -347,6 +347,8 @@ a, .fa-envelope {
           transform: scaleY(1);
   background-color: $tech-skills-bg;
   color: $tech-skills-color;
+  position: relative;
+  z-index: 15;
   
   .tech-icons {
     display: -webkit-box;
@@ -535,11 +537,190 @@ a, .fa-envelope {
 }
 /* 2.2 PROJECTS*/
 /*.................................................. */
-#projects figure {
-    padding: 5em 1em;
-    text-align: center;
-}
 
+#projects {
+  padding-top: 1em;
+  //padding-bottom: 1em;
+  z-index: 1;
+  justify-content: space-around;
+  background: $material-black;
+  color: $off-white;
+  .row {
+    //padding-top: .5em;
+    position: relative;
+  }
+  header {
+    background-color: $material-black;
+    padding: 0 0 .5em 1em;
+    border-bottom: solid 1px $slate-gray;
+  }
+  i {
+     border-right: solid 2px $slate-gray;
+     margin-right: .5em;
+     padding-right: .5em;
+     color: $off-white;
+  }
+  nav {
+    a {
+      color: $off-white;
+      text-decoration: none;
+      h6 {
+        padding: 10px 0;
+      }
+      h6:hover {
+        cursor: pointer;
+        color: $light-blue;
+      }
+      h6.active {
+        color: $active-project;
+      }
+      &:focus {
+        color: $light-blue;
+      }
+    }
+    @media screen and (max-width: 575px) {
+      .col-sm-4 {
+        max-width: 33.3333334%;
+      }
+    }
+    @media screen and (min-width: 768px) {
+      div[class^="col-"] {
+        margin-bottom: 10px;
+      }
+      h6.active:before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 90vw;
+        background: rgb(28,28,28);
+        height: 54px;
+        z-index: -1;
+        border-radius: 10px 0 0 10px;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      h6 {
+        height: 100%;
+        margin-bottom: 0;
+        text-align: center;
+      }
+      h6.active {
+        background: rgb(28,28,28);
+        border-radius: 10px 10px 0 0;
+      }
+    }
+  }
+  #project-content-box {
+    position: relative;
+    background: rgb(28,28,28);
+    article {
+      opacity: 0;
+      padding-top: 1em;
+      position: absolute;
+      transition: opacity .5s ease-in-out;
+      top: 0;
+      left: 1.5em;
+      right: 0;
+      z-index: -1;
+      height: 100%;
+    }
+    figure {
+      transition: opacity .3s ease-in-out;
+      padding: $article-elem-padding;
+      height: inherit;
+      text-align: center;
+    }    
+    img {
+      border-top: solid 20px $slate-blue;
+      border-bottom: solid 20px $slate-blue;
+      border-radius: 10px;
+      -webkit-box-shadow: -6px 7px 19px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: -6px 7px 19px 0px rgba(0,0,0,0.75);
+      box-shadow: -6px 7px 19px 0 rgba(0,0,0,.75);
+      max-height: 100%;
+      width: 100%;
+      max-width: 400px;
+    }
+    .embed-responsive {
+      border-top: solid 20px $slate-blue;
+      border-bottom: solid 20px $slate-blue;
+      border-radius: 10px;
+      max-height: 100%;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .project-copy {
+      max-height: 400px;
+      overflow-y: scroll;
+      font-size: .9em;
+    }
+    article.active {
+      opacity: 1;
+      z-index: 50;
+    }
+    #rps {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    @media screen and (min-width: 768px) {
+      article {
+        .row {
+          max-height: 400px;
+        }
+      }
+    }
+    @media screen and (max-width: 767px) {
+      article {
+        left: 0;
+      }
+      figure {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+    }
+  }
+} // end of #Projects styling
+
+/*
+#projects {
+  padding-top: 1em;
+  z-index: 1;
+  justify-content: space-around;
+  background: $material-black;
+  color: $off-white;
+  h3 {
+    border-left: solid 1px $slate-gray;
+    padding-left: 1em;
+  }
+  article {
+    padding-top: 2em;
+    border-top: solid 1px $slate-gray;
+    div {
+      padding: $article-elem-padding;
+    }
+    figure {
+      padding: $article-elem-padding;
+      border-radius: 10px;
+      margin: 0 .5em 2em .5em; 
+      text-align: center;
+      background-color: $slate-blue;
+      color: $lime-green;
+      -webkit-box-shadow: -6px 7px 19px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: -6px 7px 19px 0px rgba(0,0,0,0.75);
+      box-shadow: -6px 7px 19px 0px rgba(0,0,0,0.75);
+      img {
+        border-radius: 0 0 10px 10px;
+      }
+      .embed-responsive {
+        border-radius: 0 0 10px 10px;
+      }
+    }    
+  }
+}
+*/
 /* 3.0 ANIMATIONS*/
 /*.................................................. */
 

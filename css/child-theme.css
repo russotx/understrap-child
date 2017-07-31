@@ -9509,7 +9509,9 @@ a, .fa-envelope {
   -webkit-transform: scaleY(1);
   transform: scaleY(1);
   background-color: #00364A;
-  color: #000002; }
+  color: #000002;
+  position: relative;
+  z-index: 15; }
   #tech-skills .tech-icons {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -9664,10 +9666,153 @@ a, .fa-envelope {
 
 /* 2.2 PROJECTS*/
 /*.................................................. */
-#projects figure {
-  padding: 5em 1em;
-  text-align: center; }
+#projects {
+  padding-top: 1em;
+  z-index: 1;
+  justify-content: space-around;
+  background: #262525;
+  color: #F2EEEF; }
+  #projects .row {
+    position: relative; }
+  #projects header {
+    background-color: #262525;
+    padding: 0 0 .5em 1em;
+    border-bottom: solid 1px #545454; }
+  #projects i {
+    border-right: solid 2px #545454;
+    margin-right: .5em;
+    padding-right: .5em;
+    color: #F2EEEF; }
+  #projects nav a {
+    color: #F2EEEF;
+    text-decoration: none; }
+    #projects nav a h6 {
+      padding: 10px 0; }
+    #projects nav a h6:hover {
+      cursor: pointer;
+      color: #01B8F1; }
+    #projects nav a h6.active {
+      color: #01B8F1; }
+    #projects nav a:focus {
+      color: #01B8F1; }
+  @media screen and (max-width: 575px) {
+    #projects nav .col-sm-4 {
+      max-width: 33.3333334%; } }
+  @media screen and (min-width: 768px) {
+    #projects nav div[class^="col-"] {
+      margin-bottom: 10px; }
+    #projects nav h6.active:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 90vw;
+      background: #1c1c1c;
+      height: 54px;
+      z-index: -1;
+      border-radius: 10px 0 0 10px; } }
+  @media screen and (max-width: 767px) {
+    #projects nav h6 {
+      height: 100%;
+      margin-bottom: 0;
+      text-align: center; }
+    #projects nav h6.active {
+      background: #1c1c1c;
+      border-radius: 10px 10px 0 0; } }
+  #projects #project-content-box {
+    position: relative;
+    background: #1c1c1c; }
+    #projects #project-content-box article {
+      opacity: 0;
+      padding-top: 1em;
+      position: absolute;
+      transition: opacity .5s ease-in-out;
+      top: 0;
+      left: 1.5em;
+      right: 0;
+      z-index: -1;
+      height: 100%; }
+    #projects #project-content-box figure {
+      transition: opacity .3s ease-in-out;
+      padding: 1em 0;
+      height: inherit;
+      text-align: center; }
+    #projects #project-content-box img {
+      border-top: solid 20px #00364A;
+      border-bottom: solid 20px #00364A;
+      border-radius: 10px;
+      -webkit-box-shadow: -6px 7px 19px 0px rgba(0, 0, 0, 0.75);
+      -moz-box-shadow: -6px 7px 19px 0px rgba(0, 0, 0, 0.75);
+      box-shadow: -6px 7px 19px 0 rgba(0, 0, 0, 0.75);
+      max-height: 100%;
+      width: 100%;
+      max-width: 400px; }
+    #projects #project-content-box .embed-responsive {
+      border-top: solid 20px #00364A;
+      border-bottom: solid 20px #00364A;
+      border-radius: 10px;
+      max-height: 100%;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto; }
+    #projects #project-content-box .project-copy {
+      max-height: 400px;
+      overflow-y: scroll;
+      font-size: .9em; }
+    #projects #project-content-box article.active {
+      opacity: 1;
+      z-index: 50; }
+    #projects #project-content-box #rps {
+      position: relative;
+      top: 0;
+      left: 0; }
+    @media screen and (min-width: 768px) {
+      #projects #project-content-box article .row {
+        max-height: 400px; } }
+    @media screen and (max-width: 767px) {
+      #projects #project-content-box article {
+        left: 0; }
+      #projects #project-content-box figure {
+        margin-left: 20px;
+        margin-right: 20px; } }
 
+/*
+#projects {
+  padding-top: 1em;
+  z-index: 1;
+  justify-content: space-around;
+  background: $material-black;
+  color: $off-white;
+  h3 {
+    border-left: solid 1px $slate-gray;
+    padding-left: 1em;
+  }
+  article {
+    padding-top: 2em;
+    border-top: solid 1px $slate-gray;
+    div {
+      padding: $article-elem-padding;
+    }
+    figure {
+      padding: $article-elem-padding;
+      border-radius: 10px;
+      margin: 0 .5em 2em .5em; 
+      text-align: center;
+      background-color: $slate-blue;
+      color: $lime-green;
+      -webkit-box-shadow: -6px 7px 19px 0px rgba(0,0,0,0.75);
+      -moz-box-shadow: -6px 7px 19px 0px rgba(0,0,0,0.75);
+      box-shadow: -6px 7px 19px 0px rgba(0,0,0,0.75);
+      img {
+        border-radius: 0 0 10px 10px;
+      }
+      .embed-responsive {
+        border-radius: 0 0 10px 10px;
+      }
+    }    
+  }
+}
+*/
 /* 3.0 ANIMATIONS*/
 /*.................................................. */
 @-webkit-keyframes skill-birth {

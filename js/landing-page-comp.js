@@ -6,6 +6,7 @@ var copyTarget = document.getElementById('email-addr');
 var nameTag = document.getElementById('name-tag');
 var skillsButton = document.getElementById('open-skills');
 var techIcons = document.getElementById('all-tech-icons');
+var projectsNav = document.getElementById('projects-nav');
 var cursorTop = false;
 var skillsPopped = false;
 
@@ -26,7 +27,21 @@ document.addEventListener("DOMContentLoaded", function () {
     techIcons.addEventListener('click', bounceMarble, false);
   }
   skillsButton.addEventListener("click", openSkills, false);
+  projectsNav.addEventListener("click", cycleProjects, false);
 });
+
+function cycleProjects(event) {
+  var link = event.target;
+  var linksList = document.getElementById('projects-nav').getElementsByTagName('h6');
+  var projectActive = link.getAttribute('data-project');
+  var projectsList = document.getElementById('project-content-box').getElementsByTagName('article');
+  if (projectActive) {
+    for (var i = 0; i < projectsList.length; i++) {
+      projectsList[i].classList.toggle('active', projectsList[i].getAttribute('id') === projectActive);
+      linksList[i].classList.toggle('active', linksList[i].getAttribute('data-project') === projectActive);
+    }
+  }
+}
 
 function bounceMarble(event) {
   var origin = event.target;
